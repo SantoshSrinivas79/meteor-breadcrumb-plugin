@@ -23,6 +23,7 @@ function configurePackage(api) {
   );
 
   api.use('kadira:flow-router@2.1.1', 'client');
+  api.use('kadira:blaze-layout@2.0.0', 'client');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
   

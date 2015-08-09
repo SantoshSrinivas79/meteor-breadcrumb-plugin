@@ -5,8 +5,12 @@
 <body>
 </body>
 
+<template name="main">
+	{{>Nav}}
+	{{>Template.dynamic template=content}}
+</template>
+
 <template name="dashboard">
-  {{> Nav}}
 
   <h1>Dashboard</h1>
 
@@ -16,26 +20,18 @@
 </template>
 
 <template name="analytics">
-  {{> Nav}}
-
   <h1>Analytics Overview Title here</h1>
 </template>
 
 <template name="analyticsBooks">
-  {{> Nav}}
-
   <h1>Analytics Books Title here</h1>
 </template>
 
 <template name="tags">
-  {{> Nav}}
-
   <h1>Taglist Page</h1>
 </template>
 
 <template name="tagDetail">
-  {{> Nav}}
-
   <h1>Detail Tagpage about {{_name}}</h1>
 </template>
 
