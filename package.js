@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'meteorblackbelt:iron-router-breadcrumb',
+  name: 'ahref:flow-router-breadcrumb',
   summary: 'This package will provide a easy way to add a breadcrumb to Iron.Router with enough flexibility.',
   version: '1.0.16',
-  git: 'https://github.com/meteorblackbelt/meteor-breadcrumb-plugin/'
+  git: 'https://github.com/rfox90/meteor-breadcrumb-plugin/'
 });
 
 function configurePackage(api) {
@@ -22,10 +22,10 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('iron:router@1.0.1', 'client');
-
-  api.addFiles('lib/breadcrumb.js');
-  api.addFiles('lib/breadcrumb.html');
+  api.use('kadira:flow-router@2.1.1', 'client');
+  api.addFiles('lib/breadcrumb.html',['client']);
+  api.addFiles('lib/breadcrumb.js',['client']);
+  
 
   api.export('Breadcrumb');
 }

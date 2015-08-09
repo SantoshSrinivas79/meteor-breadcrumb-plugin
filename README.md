@@ -1,13 +1,22 @@
-meteor-breadcrumb-plugin
+meteor-breadcrumb-plugin(FlowRouter Edition)
 ========================
 
 This package will provide a easy way to add a breadcrumb with enough flexibility to your project.
+
+This FlowRouter version attempts to provide the same functionality found in the Iron Router version.
+
+# Current Issues
+
+* Breadcrumbs refuse to update on a route change. I'm trying to use a template's autorun to do this but am not having much luck :)
+* It current utilizes a private variable within FlowRouter which may cause it to break on FlowRouter updates.( I'll submit an issue about this once the other issues are resolved)
+
+Until the above issues are released, i'm not publishing this package to atmosphere.
 
 # Try the [demo](http://meteor-breadcrumb-plugin-basic-example.meteor.com) which can be found on [github](https://github.com/monbro/meteor-breadcrumb-plugin/tree/master/examples/basic)
 
 # Dependencies
 
-* Iron-Router >1.0
+* Flow-Router >=2.0
 * Meteor >1.0
 
 # Compatibility
@@ -17,7 +26,7 @@ This package will provide a easy way to add a breadcrumb with enough flexibility
 
 # Installation
 
-Use `meteor add monbro:iron-router-breadcrumb` to add the package to your meteor app
+Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor app
 
 # Usage
 
