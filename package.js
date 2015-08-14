@@ -18,7 +18,8 @@ function configurePackage(api) {
       'templating@1.0.5',
       'underscore',
       'ui',
-      'meteor'
+      'meteor',
+      'reactive-var'
     ]
   );
 
