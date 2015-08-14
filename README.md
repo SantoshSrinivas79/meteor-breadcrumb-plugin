@@ -7,12 +7,15 @@ This FlowRouter version attempts to provide the same functionality found in the 
 
 # Current Issues
 
-* Breadcrumbs refuse to update on a route change. I'm trying to use a template's autorun to do this but am not having much luck :)
 * It current utilizes a private variable within FlowRouter which may cause it to break on FlowRouter updates.( I'll submit an issue about this once the other issues are resolved)
 
 Until the above issues are released, i'm not publishing this package to atmosphere.
 
-# Try the [demo](http://meteor-breadcrumb-plugin-basic-example.meteor.com) which can be found on [github](https://github.com/monbro/meteor-breadcrumb-plugin/tree/master/examples/basic)
+# Future plans
+
+I want to look at getting this using [RouteLayer](https://github.com/nicolaslopezj/meteor-router-layer/) so that it is router independant which would be great!
+
+# Try the [demo](http://meteor-breadcrumb-plugin-basic-example.meteor.com) which can be found on [github](https://github.com/rfox90/meteor-breadcrumb-plugin/tree/master/examples/basic)
 
 # Dependencies
 
@@ -30,37 +33,34 @@ Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor 
 
 # Usage
 
-* You need to add two parameters to your iron routes which are `parent` and `title`
+* You need to add two parameters to your flow routes which are `parent` and `title`
 
-## 1. Example Iron Route with multiple levels
+## 1. Example Flow Router with multiple levels
 
 ### In this example the Breadcrumb would look or the url `/dashboard/analytics/books` like: `Dashboard / Analytics / Category Books`
 
 ```
 // Default title
-Router.configure({
+FlowRouter.configure({
   title: 'My Site'
 });
 
 // Level 0
-Router.route('/', {
+FlowRouter.route('/', {
   name: 'dashboard',
-  template: 'dashboard',
   title: 'Dashboard'
 });
 
 // Level 1
-Router.route('/dashboard/analytics', {
+FlowRouter.route('/dashboard/analytics', {
   name: 'dashboard.analytics',
-  template: 'dashboardAnalytics',
   parent: 'dashboard', // this should be the name variable of the parent route
   title: 'Analytics'
 });
 
 // Level 2
-Router.route('/dashboard/analytics/books', {
+FlowRouter.route('/dashboard/analytics/books', {
   name: 'dashboard.analytics.books',
-  template: 'dashboardAnalyticsBooks',
   parent: 'dashboard.analytics', // this should be the name variable of the parent route
   title: 'Category Books'
 });
@@ -71,15 +71,14 @@ Router.route('/dashboard/analytics/books', {
 ### In this example the Breadcrumb would look for the url `/post/hello-world` like: `Home / Blogpost Hello-World`
 
 ```
-Router.route('/', {
+FlowRouter.route('/', {
   name: 'home',
   template: 'home',
   title: 'Home'
 });
 
-Router.route('/post/:_name', {
+FlowRouter.route('/post/:_name', {
   name: 'post',
-  template: 'singleBlogPost',
   parent: 'home', // this should be the name variable of the parent route
   title: 'Blogpost :_name' // the variable :_name will be automatically replaced with the value from the url
 });

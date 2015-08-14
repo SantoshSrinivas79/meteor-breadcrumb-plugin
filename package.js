@@ -1,7 +1,7 @@
 Package.describe({
   name: 'ahref:flow-router-breadcrumb',
-  summary: 'This package will provide a easy way to add a breadcrumb to Iron.Router with enough flexibility.',
-  version: '1.0.16',
+  summary: 'This package will provide a easy way to add a breadcrumb to FlowRouter with enough flexibility.',
+  version: '1.0.0',
   git: 'https://github.com/rfox90/meteor-breadcrumb-plugin/'
 });
 
@@ -24,10 +24,8 @@ function configurePackage(api) {
   );
 
   api.use('kadira:flow-router@2.1.1', 'client');
-  api.use('kadira:blaze-layout@2.0.0', 'client');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
-  
 
   api.export('Breadcrumb');
 }
