@@ -40,11 +40,6 @@ Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor 
 ### In this example the Breadcrumb would look or the url `/dashboard/analytics/books` like: `Dashboard / Analytics / Category Books`
 
 ```
-// Default title
-FlowRouter.configure({
-  title: 'My Site'
-});
-
 // Level 0
 FlowRouter.route('/', {
   name: 'dashboard',
