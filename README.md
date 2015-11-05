@@ -9,12 +9,6 @@ This FlowRouter version attempts to provide the same functionality found in the 
 
 * It current utilizes a private variable within FlowRouter which may cause it to break on FlowRouter updates.( I'll submit an issue about this once the other issues are resolved)
 
-Until the above issues are released, i'm not publishing this package to atmosphere.
-
-# Future plans
-
-I want to look at getting this using [RouteLayer](https://github.com/nicolaslopezj/meteor-router-layer/) so that it is router independant which would be great!
-
 # Try the [demo](http://meteor-breadcrumb-plugin-basic-example.meteor.com) which can be found on [github](https://github.com/rfox90/meteor-breadcrumb-plugin/tree/master/examples/basic)
 
 # Dependencies
@@ -61,7 +55,7 @@ FlowRouter.route('/dashboard/analytics/books', {
 });
 ```
 
-## 2. Example Dynamic Iron Route
+## 2. Example Dynamic Flow Route
 
 ### In this example the Breadcrumb would look for the url `/post/hello-world` like: `Home / Blogpost Hello-World`
 
@@ -78,6 +72,22 @@ FlowRouter.route('/post/:_name', {
   title: 'Blogpost :_name' // the variable :_name will be automatically replaced with the value from the url
 });
 ```
+
+## 3. Example use of the de-slugify feature
+```
+It's a common thing to provide a slug of a title/name of document in route. This leads to breadcrumb in a form:
+
+level 1 > My-awesome-title > level 3
+What we usually want is for that to look like:
+
+level 1 > My Awesome Title > level 3
+
+If You specify the slug parameter in your route configuration like this:
+
+title: ':param',
+slug: '-'
+```
+Then all the '-' characters in the title will be changed into ' ' and the title will get capitalized as usual.
 
 ## Example custom template for navigation
 

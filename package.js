@@ -1,15 +1,11 @@
 Package.describe({
   name: 'ahref:flow-router-breadcrumb',
   summary: 'This package will provide a easy way to add a breadcrumb to FlowRouter with enough flexibility.',
-  version: '1.0.1',
+  version: '1.1.0',
   git: 'https://github.com/rfox90/meteor-breadcrumb-plugin/'
 });
 
 function configurePackage(api) {
-
-  if(api.versionsFrom) {
-    api.versionsFrom('METEOR@0.9.0');
-  }
 
   // Core Dependencies
   api.use(
@@ -22,7 +18,7 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('kadira:flow-router@2.1.1', 'client');
+  api.use('kadira:flow-router@2.8.0', 'client');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
 
