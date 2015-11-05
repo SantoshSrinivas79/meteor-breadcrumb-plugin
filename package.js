@@ -12,9 +12,8 @@ function configurePackage(api) {
     [
       'blaze@2.0.0',
       'templating@1.0.5',
-      'underscore',
-      'ui',
-      'meteor'
+      'underscore@1.0.4',
+      'meteor@1.1.10'
     ]
   );
 
