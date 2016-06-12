@@ -73,7 +73,7 @@ FlowRouter.route('/post/:_name', {
 });
 ```
 
-### In this example the Breadcrumb would look for the url `/post/today-post` (`/post/yesterday-post`) like: `Today Posts / Today Post 15:50` (`Yesterday Posts / Yesterday Post 15:50`) 
+### In this example the Breadcrumb would be `Today Posts / Today Post 15:50` for url `/post/today-post`. And would be `Yesterday Posts / Yesterday Post 15:50` for url  `/post/yesterday-post` 
 
 ```javascript
 FlowRouter.route('/today', {
@@ -97,7 +97,7 @@ FlowRouter.route('/post/:_name', {
       return "post.yesterday";
   }, 
   title: function(){// We can use function as 
-     return ":_name" + getPostTime(this.); //some function to return formatted post time    
+     return ":_name" + getPostTime(this); //some function to return formatted post time    
   } 
 });
 ```
