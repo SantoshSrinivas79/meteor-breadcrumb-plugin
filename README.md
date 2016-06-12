@@ -96,7 +96,7 @@ FlowRouter.route('/post/:_name', {
       }
       return "post.yesterday";
   }, 
-  title: function(){// We can use function as 
+  title: function(){// We can use function here
      return ":_name" + getPostTime(this); //some function to return formatted post time    
   } 
 });
