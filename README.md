@@ -25,9 +25,31 @@ This FlowRouter version attempts to provide the same functionality found in the 
 
 Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor app
 
+# Concept
+Two parameters need to be specified on the flow routes that will have breadcrumbs.
+The 'parent' attribute forms a chain of routes that is traversed from the current route backwards along the parent links to construct the breadcrumb trail.
+Each breadcrumb is the result of evaluating the 'title' parameter in the routes.
+
+The 'title' parameter can be a string, optionally containing route path parameter references.
+Alternatively, the 'title' parameter can be a function. In either case, a data context is provided by the package.
+The context is an object containing path and query parameters, which are taken from FlowRoute.current() for the rightmost crumb, or from the crumb to the immediate right. 
+
+The 'parent' parameter can be a string, in which it is taken as the name of the parent route, or a function.
+If it is a function, it will be called with the data context described above, and must return an object containing
+* name: name of the parent route
+* params: the path params
+* queryParams: the queryParams
+
+The params and queryParams allow modifying the data context supplied to the (parent route) crumb to the left; e.g. changing the name of a parameter.
+
 # Usage
 
 * You need to add two parameters to your flow routes which are `parent` and `title`
+    * 'parent': string or function as described above. 
+    * 'title': as described above
+* The following optional parameters can be specifed on the flow routes
+    * 'breadcrumbCSS' flow route parameter adds the specified classes to the breadcrumb
+    * 'caps' flow route parameter capitalizes the title
 
 ## 1. Example Flow Router with multiple levels
 
@@ -70,6 +92,12 @@ FlowRouter.route('/post/:_name', {
   name: 'post',
   parent: 'home', // this should be the name variable of the parent route
   title: 'Blogpost :_name' // the variable :_name will be automatically replaced with the value from the url
+});
+
+FlowRouter.route('/post/:_postname/comment/:_name', {
+  name: 'post',
+  parent: function() { return {name: 'posts', params: {_name: this.params._postname}, queryParams: {}}; },
+  title: function() { return 'Comment :_name'; }
 });
 ```
 
