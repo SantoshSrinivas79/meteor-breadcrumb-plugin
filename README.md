@@ -28,7 +28,7 @@ Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor 
 # Concept
 Two parameters need to be specified on the flow routes that will have breadcrumbs.
 The 'parent' attribute forms a chain of routes that is traversed from the current route backwards along the parent links to construct the breadcrumb trail.
-Each breadcrumb is the result of evaluating the 'title' parameter in the routes.
+Each breadcrumb is the result of evaluating the 'title' parameter in the routes along the chain.
 
 The 'title' parameter can be a string, optionally containing route path parameter references.
 Alternatively, the 'title' parameter can be a function. In either case, a data context is provided by the package.
@@ -42,14 +42,17 @@ If it is a function, it will be called with the data context described above, an
 
 The params and queryParams allow modifying the data context supplied to the (parent route) crumb to the left; e.g. changing the name of a parameter.
 
+Finally, the crumbs making up the breadcrumb trail are cached. When the active route changes, the trail is examined left-to-right to see if any of the routes or data context has changed.
+The changed crumb and the crumbs to its right are all re-evaluated.
+
 # Usage
 
 * You need to add two parameters to your flow routes which are `parent` and `title`
-    * 'parent': string or function as described above. 
-    * 'title': as described above
+    * 'parent': string or function giving the parent route and optionally modifying the data context, as described above.
+    * 'title': a string or function, as described above.
 * The following optional parameters can be specifed on the flow routes
-    * 'breadcrumbCSS' flow route parameter adds the specified classes to the breadcrumb
-    * 'caps' flow route parameter capitalizes the title
+    * 'breadcrumbCSS' adds the specified classes to the breadcrumb
+    * 'caps' flow route parameter,if present, causes the title to be capitalized
 
 ## 1. Example Flow Router with multiple levels
 
@@ -82,22 +85,26 @@ FlowRouter.route('/dashboard/analytics/books', {
 ### In this example the Breadcrumb would look for the url `/post/hello-world` like: `Home / Blogpost Hello-World`
 
 ```
+// Level 1
 FlowRouter.route('/', {
   name: 'home',
   template: 'home',
   title: 'Home'
 });
 
+// Level 2
 FlowRouter.route('/post/:_name', {
   name: 'post',
   parent: 'home', // this should be the name variable of the parent route
   title: 'Blogpost :_name' // the variable :_name will be automatically replaced with the value from the url
 });
 
+// Level 3. Because we are using different path variables than Level 2, we construct a new object in parent() with the required names.
 FlowRouter.route('/post/:_postname/comment/:_name', {
   name: 'post',
   parent: function() { return {name: 'posts', params: {_name: this.params._postname}, queryParams: {}}; },
-  title: function() { return 'Comment :_name'; }
+  title: function() { return 'Comment ' + this.params._name.substr(0,4); },
+  breadcrumbCSS: 'comment'
 });
 ```
 
@@ -123,11 +130,18 @@ Then all the '-' characters in the title will be changed into ' ' and the title 
 
 ```
 <template name="breadcrumb">
-    <ol class="breadcrumb">
-        {{#each Breadcrumb}}
-            <li class="{{cssClasses}}"><a href="{{url}}">{{title}}</a></li>
-        {{/each}}
-    </ol>
+    {{#if BreadcrumbNonEmpty}}
+        <ol class="breadcrumb">
+            {{#each Breadcrumb}}
+                {{#if active}}
+                    <li class="{{cssClasses}}"><span class="active">{{title}}</span></li>
+                {{else}}
+                    <li class="{{cssClasses}}"><a href="{{url}}">{{title}}</a></li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    {{/if}}
+    {{getReactive}}
 </template>
 ```
 
