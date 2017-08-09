@@ -23,7 +23,7 @@ This FlowRouter version attempts to provide the same functionality found in the 
 
 # Installation
 
-Use `meteor add ahref:flow-router-breadcrumb` to add the package to your meteor app
+Use `meteor add sojourneer:flow-router-breadcrumb` to add the package to your meteor app
 
 # Concept
 Two parameters need to be specified on the flow routes that will have breadcrumbs.
@@ -154,3 +154,7 @@ if (Meteor.is_client) {
   }
 }
 ```
+
+## Internal dependencies / credits
+Forked from [ahref:flow-router-breadcrumb](https://atmospherejs.com/ahref/flow-router-breadcrumb)
+

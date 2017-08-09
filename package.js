@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'ahref:flow-router-breadcrumb',
-  summary: 'This package will provide a easy way to add a breadcrumb to FlowRouter with enough flexibility.',
-  version: '1.1.0',
-  git: 'https://github.com/rfox90/meteor-breadcrumb-plugin/'
+  name: 'sojourneer:flow-router-breadcrumb',
+  summary: 'Provide a easy and flexible way to add breadcrumb trail support for FlowRouter.',
+  version: '1.2.0',
+  git: 'https://github.com/Sojourneer/meteor-breadcrumb-plugin.git'
 });
 
 function configurePackage(api) {
