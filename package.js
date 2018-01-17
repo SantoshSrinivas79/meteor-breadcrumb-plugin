@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'sojourneer:flow-router-breadcrumb',
-  summary: 'Provide a easy and flexible way to add breadcrumb trail support for FlowRouter.',
-  version: '1.2.0',
-  git: 'https://github.com/Sojourneer/meteor-breadcrumb-plugin.git'
+  name: 'krishaamer:flow-router-breadcrumb',
+  summary: 'Provide a easy and flexible way to add breadcrumb trail support for Ostrio FlowRouter.',
+  version: '1.2.1',
+  git: 'https://github.com/krishaamer/flow-router-breadcrumb.git'
 });
 
 function configurePackage(api) {
@@ -17,7 +17,7 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('ostrio:flow-router-extra', 'client');
+  api.use('ostrio:flow-router-extra');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
 
