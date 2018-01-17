@@ -1,7 +1,7 @@
 Package.describe({
   name: 'krishaamer:flow-router-breadcrumb',
   summary: 'Provide a easy and flexible way to add breadcrumb trail support for Ostrio FlowRouter.',
-  version: '1.2.1',
+  version: '1.2.2',
   git: 'https://github.com/krishaamer/flow-router-breadcrumb.git'
 });
 
