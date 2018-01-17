@@ -17,7 +17,7 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('kadira:flow-router@2.8.0', 'client');
+  api.use('ostrio:flow-router-extra', 'client');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
 
