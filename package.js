@@ -17,7 +17,7 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('ostrio:flow-router-extra');
+  api.use('ostrio:flow-router-extra@3.4.3');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
 
