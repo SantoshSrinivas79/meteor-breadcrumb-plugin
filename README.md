@@ -108,6 +108,35 @@ FlowRouter.route('/post/:_postname/comment/:_name', {
 });
 ```
 
+### In this example the Breadcrumb would be `Today Posts / Today Post 15:50` for url `/post/today-post`. And would be `Yesterday Posts / Yesterday Post 15:50` for url  `/post/yesterday-post` 
+
+```javascript
+FlowRouter.route('/today', {
+  name: 'post.today',
+  template: 'todayPosts',
+  title: 'Today posts'
+});
+
+FlowRouter.route('/yesterday', {
+  name: 'post.yesterday',
+  template: 'yesterdayPosts',
+  title: 'Yesterday posts'
+});
+
+FlowRouter.route('/post/:_name', {
+  name: 'post',
+  parent: function(){// we can use  function to determine parent. "this" value will be FlowRouter.current()
+    if (isTodayPost()){//some function to detect time of post
+        return "post.today";
+      }
+      return "post.yesterday";
+  }, 
+  title: function(){// We can use function here
+     return ":_name" + getPostTime(this); //some function to return formatted post time    
+  } 
+});
+```
+
 ## 3. Example use of the de-slugify feature
 ```
 It's a common thing to provide a slug of a title/name of document in route. This leads to breadcrumb in a form:
