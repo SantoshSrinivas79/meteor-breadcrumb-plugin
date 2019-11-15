@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'ahref:flow-router-breadcrumb',
-  summary: 'This package will provide a easy way to add a breadcrumb to FlowRouter with enough flexibility.',
-  version: '1.1.0',
-  git: 'https://github.com/rfox90/meteor-breadcrumb-plugin/'
+  name: 'krishaamer:flow-router-breadcrumb',
+  summary: 'Provide a easy and flexible way to add breadcrumb trail support for Ostrio FlowRouter.',
+  version: '1.2.2',
+  git: 'https://github.com/krishaamer/flow-router-breadcrumb.git'
 });
 
 function configurePackage(api) {
@@ -17,7 +17,7 @@ function configurePackage(api) {
     ]
   );
 
-  api.use('kadira:flow-router@2.8.0', 'client');
+  api.use('ostrio:flow-router-extra@3.4.3');
   api.addFiles('lib/breadcrumb.html',['client']);
   api.addFiles('lib/breadcrumb.js',['client']);
 

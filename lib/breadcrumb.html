@@ -1,8 +1,14 @@
 <template name="breadcrumb">
-    <ol class="breadcrumb">
-        {{#each Breadcrumb}}
-            <li class="{{cssClasses}}"><a href="{{url}}">{{title}}</a></li>
-        {{/each}}
-    </ol>
+    {{#if BreadcrumbNonEmpty}}
+        <ol class="breadcrumb">
+            {{#each Breadcrumb}}
+                {{#if active}}
+                    <li class="{{cssClasses}}"><span class="active">{{title}}</span></li>
+                {{else}}
+                    <li class="{{cssClasses}}"><a href="{{url}}">{{title}}</a></li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    {{/if}}
     {{getReactive}}
 </template>
